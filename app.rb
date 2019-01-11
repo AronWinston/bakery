@@ -22,7 +22,7 @@ end
 
 get "/cakes" do
 
-    @space_cake = Cake.new("Super strong", "$19.99/200 grams")
+    @space_cake = Cake.new("Hunky Chuncky Choco", "$12.99/cake")
     @cheese_cake = Cake.new("Baked with premium cheese", "$15.99/cake")
     erb :cakes
 end
