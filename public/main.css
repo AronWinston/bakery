@@ -1,0 +1,46 @@
+body{
+    background-color:  pink;
+}
+
+.quote{
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    font-family: 'Charm', cursive;
+}
+
+.bakery{
+    display: flex;
+    justify-content: center;
+    font-size: 6em;
+    
+}
+
+#carouselExampleIndicators {
+    display: flex;
+    justify-content: left;
+}
+
+.navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .list {
+    float: left;
+  }
+  
+  .list a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .list a:hover {
+    background-color: #111;
+  }
