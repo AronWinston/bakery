@@ -44,3 +44,12 @@ body{
   .list a:hover {
     background-color: #111;
   }
+
+  .pastry {
+      display: inline-block;
+  }
+
+  h3{
+      display: flex;
+      justify-content: center;
+  }
