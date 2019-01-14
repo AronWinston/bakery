@@ -44,7 +44,7 @@ post "/contact" do
     subject = 'betsys bakery'
     content = SendGrid::Content.new(
       type: 'text/plain', 
-      value: 'Choclolate chip: $5.99/dz, Delicious and moist, Macarons: $4.99/dz, Bright and colorfull, Peanut butter: $6.99/dz, Creamy peanut butter, Chocolate cake: $12.99/cake, Hunky Chuncky Choco
+      value: 'Choclolate chip: $5.99/dz, Delicious and moist, Macarons: $4.99/dz, Bright and colorfull, Peanut butter: $6.99/dz, Creamy peanut butter, Chocolate cake: $12.99/cake, Hunky Chuncky Choco,
       Cheesecake: $15.99/cake, Baked with premium cheese, Coffe cake: $10.99/cake, Enjoy with coffee, Corn muffin: $.99/muffin, This muffin is corny, Blueberry muffin: $1.99/muffin, Flavorfull and fantastic,
       Pumpkin muffin: $1.99/muffin, perfectly pump-a-licious'
     )
