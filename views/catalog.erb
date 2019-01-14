@@ -1,0 +1,14 @@
+
+
+
+<p>Full Catalog of Pastries</p>
+
+<ul>
+
+<%@catalog.each do |item|%>
+<li><%=item.name%></li>
+<ul>
+<li><%=item.price%></li>
+</ul>
+</ul>
+<%end%>

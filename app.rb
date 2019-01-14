@@ -3,7 +3,7 @@ require "sendgrid-ruby"
 require_relative "./class"
 
 
-catalog = [@chocolate_chip,@rainbow_cookie,@space_cake,@cheese_cake,@corn_muffin,@blueberry_muffin]
+
 
 
 
@@ -14,23 +14,23 @@ end
 
 get "/cookies" do
 
-    @chocolate_chip = Cookie.new("Delicious and moist", "$5.99/dz")
-    @rainbow_cookie = Cookie.new("Bright and colorfull", "$4.99/dz")
+    @chocolate_chip = Cookie.new("Delicious and moist", "$5.99/dz", "chocolate-chip")
+    @rainbow_cookie = Cookie.new("Bright and colorfull", "$4.99/dz", "macaron" )
 
     erb :cookies
 end
 
 get "/cakes" do
 
-    @space_cake = Cake.new("Hunky Chuncky Choco", "$12.99/cake")
-    @cheese_cake = Cake.new("Baked with premium cheese", "$15.99/cake")
+    @space_cake = Cake.new("Hunky Chuncky Choco", "$12.99/cake", "chocolate cake")
+    @cheese_cake = Cake.new("Baked with premium cheese", "$15.99/cake", "cheesecake")
     erb :cakes
 end
 
 get "/muffins" do
 
-    @corn_muffin = Muffin.new("This muffin is corny", "$.99/muffin")
-    @blueberry_muffin = Muffin.new("Flavorfull and fantastic", "$1.99/muffin")
+    @corn_muffin = Muffin.new("This muffin is corny", "$.99/muffin", "corn muffin")
+    @blueberry_muffin = Muffin.new("Flavorfull and fantastic", "$1.99/muffin", "blueberry muffin")
     erb :muffins
 end
 
@@ -42,7 +42,7 @@ post "/contact" do
     content = SendGrid::Content.new(
       type: 'text/plain', 
       value: "Choclolate chip: $5.99/dz, Macarons: $4.99/dz, Chocolate cake: $12.99/cake,
-       Cheesecake: $15.99/cake, Corn muffin: $.99/muffin, Blueberry muffin: $1.99/muffin"
+      Cheesecake: $15.99/cake, Corn muffin: $.99/muffin, Blueberry muffin: $1.99/muffin"
     )
     
     # create mail object with from, subject, to and content
@@ -55,28 +55,56 @@ post "/contact" do
     
     # sends the email
     response = sg.client.mail._('send').post(request_body: mail.to_json)
-    
     # display http response code
     puts response.status_code
-    
     # display http response body
     puts response.body
-    
     # display http response headers
     puts response.headers
 
-    # phrase = params[:comment]
     
-    puts @catalog
+    
+    
 
 
     redirect "/"
  
 end
 
-get "/allitems" do 
+get "/catalog" do 
+
+    @catalog = [
+        @chocolate_chip = Cookie.new("Delicious and moist", "$5.99/dz", "chocolate-chip"),
+        @rainbow_cookie = Cookie.new("Bright and colorfull", "$4.99/dz", "macaron"),
+        @space_cake = Cake.new("Hunky Chuncky Choco", "$12.99/cake", "chocolate cake"),
+        @cheese_cake = Cake.new("Baked with premium cheese", "$15.99/cake", "cheesecake"),
+        @corn_muffin = Muffin.new("This muffin is corny", "$.99/muffin", "corn muffin"),
+        @blueberry_muffin = Muffin.new("Flavorfull and fantastic", "$1.99/muffin", "blueberry muffin")
+            ]
 
     erb :catalog
 end
+
+def catalog_creater(array)
+    array.each do |item|
+        item.name
+        item.price
+    end
+   array
+end
+
+@catalog = [
+    @chocolate_chip = Cookie.new("Delicious and moist", "$5.99/dz", "chocolate-chip"),
+    @rainbow_cookie = Cookie.new("Bright and colorfull", "$4.99/dz", "macaron"),
+    @space_cake = Cake.new("Hunky Chuncky Choco", "$12.99/cake", "chocolate cake"),
+    @cheese_cake = Cake.new("Baked with premium cheese", "$15.99/cake", "cheesecake"),
+    @corn_muffin = Muffin.new("This muffin is corny", "$.99/muffin", "corn muffin"),
+    @blueberry_muffin = Muffin.new("Flavorfull and fantastic", "$1.99/muffin", "blueberry muffin")
+        ]
+
+p catalog_creater(@catalog)
+
+"Choclolate chip: $5.99/dz, Macarons: $4.99/dz, Chocolate cake: $12.99/cake,
+       Cheesecake: $15.99/cake, Corn muffin: $.99/muffin, Blueberry muffin: $1.99/muffin"
 
     
