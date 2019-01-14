@@ -3,7 +3,7 @@ require "sendgrid-ruby"
 require_relative "./class"
 
 
-
+catalog = [@chocolate_chip,@rainbow_cookie,@space_cake,@cheese_cake,@corn_muffin,@blueberry_muffin]
 
 
 
@@ -33,3 +33,50 @@ get "/muffins" do
     @blueberry_muffin = Muffin.new("Flavorfull and fantastic", "$1.99/muffin")
     erb :muffins
 end
+
+post "/contact" do
+
+    from = SendGrid::Email.new(email: 'awtheman@gmail.com')
+    to = SendGrid::Email.new(email: params[:usr_email])
+    subject = 'election'
+    content = SendGrid::Content.new(
+      type: 'text/plain', 
+      value: "Choclolate chip: $5.99/dz, Macarons: $4.99/dz, Chocolate cake: $12.99/cake,
+       Cheesecake: $15.99/cake, Corn muffin: $.99/muffin, Blueberry muffin: $1.99/muffin"
+    )
+    
+    # create mail object with from, subject, to and content
+    mail = SendGrid::Mail.new(from, subject, to, content)
+    
+    # sets up the api key
+    sg = SendGrid::API.new(
+      api_key: ENV["SENDGRID_API_KEY"]
+    )
+    
+    # sends the email
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    
+    # display http response code
+    puts response.status_code
+    
+    # display http response body
+    puts response.body
+    
+    # display http response headers
+    puts response.headers
+
+    # phrase = params[:comment]
+    
+    puts @catalog
+
+
+    redirect "/"
+ 
+end
+
+get "/allitems" do 
+
+    erb :catalog
+end
+
+    
