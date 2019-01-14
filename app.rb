@@ -104,8 +104,7 @@ end
 
 catalog_creater(@catalog)
 
-"Choclolate chip: $5.99/dz, Macarons: $4.99/dz, Chocolate cake: $12.99/cake,
-      Cheesecake: $15.99/cake, Corn muffin: $.99/muffin, Blueberry muffin: $1.99/muffin"
+
 
 
 
