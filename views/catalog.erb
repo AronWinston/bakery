@@ -1,14 +1,16 @@
 
 
+<div class="products">
 
 <p>Full Catalog of Pastries</p>
 
 <ul>
-
 <%@catalog.each do |item|%>
+<img src="<%=item.image%>" height="150px" width="150px">
 <li><%=item.name%></li>
-<ul>
+
 <li><%=item.price%></li>
-</ul>
-</ul>
 <%end%>
+
+</ul>
+</div>

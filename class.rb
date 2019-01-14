@@ -1,11 +1,12 @@
 class Cookie
 
-    attr_accessor :description, :price, :name
+    attr_accessor :description, :price, :name, :image
 
-    def initialize(description, price, name)
+    def initialize(description, price, name, image)
         @description = description
         @price = price
         @name = name
+        @image = image
     end
 
     def description()
@@ -18,6 +19,10 @@ class Cookie
 
     def name()
         @name
+    end
+
+    def image()
+        @image
     end
 end
 
