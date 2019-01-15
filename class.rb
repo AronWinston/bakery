@@ -1,4 +1,4 @@
-class Cookie
+class Pastry
 
     attr_accessor :description, :price, :name, :image
 
@@ -26,8 +26,11 @@ class Cookie
     end
 end
 
-class Cake < Cookie
+class Cookie < Pastry
 end
 
-class Muffin < Cookie
+class Cake < Pastry
+end
+
+class Muffin < Pastry
 end
