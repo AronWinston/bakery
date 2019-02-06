@@ -51,7 +51,7 @@ post "/contact" do
         @pumpkin_muffin = Muffin.new("Perfectly pump-a-licious", "$1.99/muffin", "pumpkin muffin", "https://bit.ly/2CmBlPu")
             ]
     
-    from = SendGrid::Email.new(email: 'awtheman@gmail.com')
+    from = SendGrid::Email.new(email: 'aronwinston2792@gmail.com')
     to = SendGrid::Email.new(email: params[:usr_email])
     subject = 'betsys bakery'
     content = SendGrid::Content.new(
